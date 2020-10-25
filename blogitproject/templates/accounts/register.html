@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}| Register{% endblock title %}
+{% block content %}
+<!-- breadcrumb part start-->
+<section class="breadcrumb_part">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb_iner">
+                    <h2>Register</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="whole-wrap">
+    <div class="container box_1170">
+        <div class="section-top-border">
+			<div class="row">
+                <div class="col-4"></div>
+				<div class="col-lg-4 col-md-4">
+					<h3 class="mb-30 text-center">Register</h3>
+					<form action="{% url 'register' %}" method="POST">
+                        {% csrf_token %}
+					    <div class="mt-10">
+							<input type="text" name="username" placeholder="Username" required="" class="single-input-primary">
+                        </div>
+                        <div class="mt-10">
+							<input type="text" name="first_name" placeholder="First Name" required="" class="single-input-primary">
+                        </div>
+                        <div class="mt-10">
+							<input type="text" name="last_name" placeholder="Last Name" required="" class="single-input-primary">
+                        </div>
+                        <div class="mt-10">
+							<input type="text" name="email" placeholder="example@test.com" required="" class="single-input-primary">
+						</div>
+						<div class="mt-10">
+                            <input type="password" name="password" placeholder="Password"
+                            required="" class="single-input-accent">
+                        </div>
+                        <div class="mt-10">
+                            <input type="password" name="password1" placeholder="Confirm Password"
+                            required="" class="single-input-accent">
+                        </div>
+                        <div class="col-12 mt-3">
+                            <button type="submit" class="genric-btn primary btn-block">Register</button>
+                        </div>
+                        <div class="col-12 mt-3 text-center">
+                            <span>OR</span>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <a href="{% url 'login' %}" class="genric-btn link btn-block">Login</a>
+                        </div>
+                    </form>
+                    <div class="col-4"></div>
+					
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
+<!-- breadcrumb part end-->
+{% endblock content %}
