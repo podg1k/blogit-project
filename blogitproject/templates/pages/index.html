@@ -1,4 +1,4 @@
-
+<!--================index.html =================-->
 {% extends 'base.html'%}
 {% load static %}
 {% block title %} Homepage {% endblock title %}
@@ -24,7 +24,7 @@
 <section class="blog_area section_padding">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 mb-5 mb-lg-0">
+            <div class="col-lg-8 mb-0 mb-lg-8">
                 <div class="blog_left_sidebar">
                     <article class="blog_item">
                         <div class="blog_item_img">
@@ -58,6 +58,18 @@
                                     {% endif %}
                                     {{blog.likes|length}} People like this</a></li>
                             </ul>
+            <!-------- Теги --------->
+                        {% with names=blog.tags.names %}
+                        {% if names.count > 0 %}
+                        <div class="d-sm-flex justify-content-between text-center">
+                        <ul class="blog-info-link">
+                        {% for name in names %}
+                        <li><a href="#">{{name}}</a></li>
+                        {% endfor %}
+                        </ul>
+                        </div>
+                        {% endif %}
+                        {% endwith %}
                         </div>
                         </article>
                         {% endfor %}

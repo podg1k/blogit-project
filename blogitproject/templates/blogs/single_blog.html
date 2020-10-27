@@ -3,6 +3,7 @@
 {% block title %} | {{blog.title}} {% endblock title %}
 {% block content %}
 <!-- breadcrumb part start-->
+
 <a href="{% url 'single_blog' blog.id %}"
 class="blog_item_date"></a>
 <section class="breadcrumb_part">
@@ -29,8 +30,9 @@ class="blog_item_date"></a>
               <div class="blog_details">
                  <h2>{{blog.title}}
                   {% if user.id == blog.author.user.id %}
-                     (<a href="#"><i class="far fa-edit"></i> Edit</a>)
-                  {% endif %}
+                     (<a href="{% url 'edit_blog' blog.id %}" method="POST" enctype="multipart/form-data"><i class="far fa-edit"></i> Edit</a>)
+                     {% csrf_token %}
+                     {% endif %}
                  </h2>
                  <ul class="blog-info-link mt-1 mb-1">
                     <!-- <li><p><i class="far fa-user"></i> Travel, Lifestyle</p></li> -->
@@ -56,6 +58,18 @@ class="blog_item_date"></a>
                     <p class="comment-count"><span class="align-middle"><i class="far fa-comment"></i></span> {{blog.comments.all.count}} Comments</p>
                  </div>
               </div>
+              <!-- Теги -->
+              {% with names=blog.tags.names %}
+              {% if names.count > 0 %}
+              <div class="d-sm-flex justify-content-between text-center">
+              <ul class="blog-info-link">
+              {% for name in names %}
+              <li><a href="#">{{name}}</a></li>
+              {% endfor %}
+              </ul>
+              </div>
+              {% endif %}
+              {% endwith %}
            </div>
            <div class="blog-author">
               <div class="media align-items-center">
