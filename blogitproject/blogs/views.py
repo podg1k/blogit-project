@@ -7,6 +7,7 @@ from django.contrib import messages
 
 import json
 from django.http import HttpResponse
+from taggit.models import Tag
 
 # Create your views here.
 @login_required
@@ -15,9 +16,15 @@ def single_blog(request, blog_id):
     blog = Blog.objects.get(id=str(blog_id))
     profile = Profile.objects.get(user=request.user)
 
+    latest_blogs = Blog.objects.filter(is_published=True).order_by('-created_at')[:4]
+
+    tags = Tag.objects.all()
+
     context = {
         'blog': blog,
         'profile': profile,
+        'latest_blogs': latest_blogs,
+        'tags': tags,
     }
 
     return render(request, 'blogs/single_blog.html', context=context)

@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'pages',
     'profiles',
     'taggit',
+    'easy_thumbnails',
 ]
 
 MIDDLEWARE = [
