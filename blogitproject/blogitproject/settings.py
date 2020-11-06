@@ -30,6 +30,7 @@ ALLOWED_HOSTS = []
 
 # Application definition
 
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
     'profiles',
     'taggit',
     'easy_thumbnails',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -55,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     
 ]
 
 ROOT_URLCONF = 'blogitproject.urls'
@@ -151,3 +154,8 @@ MESSAGE_TAGS = {
     messages.INFO: 'success',
     messages.ERROR: 'danger'
 }
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_HOST_USER = 'polezhaevdaniil@yandex.ru'
+EMAIL_HOST_PASSWORD = '20021991'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
